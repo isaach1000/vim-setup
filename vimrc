@@ -80,6 +80,7 @@ let g:airline#extensions#tabline#enabled = 1  " Show airline for tabs too
 " NERDTree settings
 nnoremap <silent> <leader>t :NERDTreeTabsToggle<CR>
 let g:nerdtree_tabs_open_on_console_startup = 0
+let g:nerdtree_tabs_open_on_gui_startup = 0
 
 " vim-easytags settings
 " Where to look for tags files

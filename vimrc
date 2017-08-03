@@ -10,16 +10,21 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'scrooloose/nerdtree'
 Plugin 'majutsushi/tagbar'
 Plugin 'tpope/vim-abolish'
+Plugin 'tpope/vim-fugitive'
 Plugin 'vim-airline/vim-airline'
 Plugin 'xolox/vim-easytags'
 Plugin 'nvie/vim-flake8'
 Plugin 'xolox/vim-misc'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'DoxygenToolkit.vim'
+Plugin 'editorconfig/editorconfig-vim'
 
 call vundle#end()
 
 syntax on
+
+" Spellcheck
+set spell spelllang=en_us
 
 " Enable mouse
 set mouse=a
@@ -37,7 +42,6 @@ set ruler
 set number
 set showcmd
 set incsearch
-" set hlsearch
 
 " Custom leader key
 let mapleader = "\\"
@@ -85,8 +89,6 @@ let g:nerdtree_tabs_open_on_gui_startup = 0
 " vim-easytags settings
 " Where to look for tags files
 set tags=.tags;,~/.vimtags
-
-" Sensible defaults
 let g:easytags_events = ['BufReadPost', 'BufWritePost']
 let g:easytags_async = 1
 let g:easytags_dynamic_files = 2
@@ -95,6 +97,9 @@ let g:easytags_suppress_ctags_warning = 1
 
 " a.vim
 let g:alternateNoDefaultAlternate = 1
+
+" EditorConfig settings
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 " Tagbar settings
 " Open/close tagbar with \b

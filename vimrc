@@ -18,6 +18,7 @@ Plugin 'xolox/vim-misc'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'DoxygenToolkit.vim'
 Plugin 'editorconfig/editorconfig-vim'
+Plugin 'fatih/vim-go'
 
 call vundle#end()
 

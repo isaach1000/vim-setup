@@ -22,8 +22,8 @@ Plugin 'fatih/vim-go'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'rust-lang/rust.vim'
 Plugin 'mileszs/ack.vim'
-Plugin 'LucHermitte/lh-vim-lib'
-Plugin 'LucHermitte/local_vimrc'
+Plugin 'embear/vim-localvimrc'
+Plugin 'zah/nim.vim'
 
 call vundle#end()
 
@@ -54,6 +54,9 @@ let mapleader = "\\"
 
 " Below gets rid of flash on error
 set vb t_vb = ""
+
+" Highlight matches
+" set hlsearch
 
 " Show trailing spaces
 autocmd BufWinEnter * match ErrorMsg '\s\+$'
@@ -109,12 +112,13 @@ let g:alternateNoDefaultAlternate = 1
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 " YouCompleteMe settings
-let g:ycm_extra_conf_globlist = ['~/proj/cpp/*']
+let g:ycm_extra_conf_globlist = ['~/proj/*']
 
-" ack.vim settings
-if executable('ag')
-    let g:ackprg = 'ag --vimgrep'
-endif
+" ack.vim
+let g:ackprg = 'ag --nogroup --nocolor --column'
+
+" vim-localvimrc
+let g:localvimrc_whitelist=['/home/ihier/proj', '/Users/isaachier/proj/']
 
 " Tagbar settings
 " Open/close tagbar with \b

@@ -19,6 +19,11 @@ Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'DoxygenToolkit.vim'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'fatih/vim-go'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'rust-lang/rust.vim'
+Plugin 'mileszs/ack.vim'
+Plugin 'LucHermitte/lh-vim-lib'
+Plugin 'LucHermitte/local_vimrc'
 
 call vundle#end()
 
@@ -56,13 +61,14 @@ autocmd BufWinEnter * match ErrorMsg '\s\+$'
 " Fix tabs for makefiles
 autocmd FileType make setlocal noexpandtab
 
+colorscheme evening
+
 " 80 characters per line
 set colorcolumn=81
+hi ColorColumn ctermbg=1 guibg=Red
 
 " Set working directory to directory of file
 set autochdir
-
-colorscheme evening
 
 " Autocomplete behavior
 set completeopt+=longest
@@ -101,6 +107,14 @@ let g:alternateNoDefaultAlternate = 1
 
 " EditorConfig settings
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+
+" YouCompleteMe settings
+let g:ycm_extra_conf_globlist = ['~/proj/cpp/*']
+
+" ack.vim settings
+if executable('ag')
+    let g:ackprg = 'ag --vimgrep'
+endif
 
 " Tagbar settings
 " Open/close tagbar with \b

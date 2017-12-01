@@ -19,6 +19,10 @@ Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'DoxygenToolkit.vim'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'fatih/vim-go'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'mileszs/ack.vim'
+Plugin 'embear/vim-localvimrc'
+Plugin 'zah/nim.vim'
 
 call vundle#end()
 
@@ -50,19 +54,27 @@ let mapleader = "\\"
 " Below gets rid of flash on error
 set vb t_vb = ""
 
+" Highlight matches
+" set hlsearch
+
 " Show trailing spaces
 autocmd BufWinEnter * match ErrorMsg '\s\+$'
 
 " Fix tabs for makefiles
 autocmd FileType make setlocal noexpandtab
 
-" 80 characters per line
-set colorcolumn=81
-
 " Set working directory to directory of file
 set autochdir
 
 colorscheme evening
+
+" 80 characters per line
+set colorcolumn=81
+hi ColorColumn ctermbg=7 guibg=Red
+
+" Cursor color
+hi Cursor guibg=White
+hi iCursor guibg=White
 
 " Autocomplete behavior
 set completeopt+=longest
@@ -101,6 +113,15 @@ let g:alternateNoDefaultAlternate = 1
 
 " EditorConfig settings
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+
+" YouCompleteMe settings
+let g:ycm_extra_conf_globlist = ['~/proj/*']
+
+" ack.vim
+let g:ackprg = 'ag --nogroup --nocolor --column'
+
+" vim-localvimrc
+let g:localvimrc_whitelist=['/home/ihier/proj', '/Users/isaachier/proj/']
 
 " Tagbar settings
 " Open/close tagbar with \b

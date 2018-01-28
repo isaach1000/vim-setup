@@ -7,23 +7,15 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'vim-scripts/a.vim'
 Plugin 'flazz/vim-colorschemes'
-Plugin 'scrooloose/nerdtree'
-Plugin 'majutsushi/tagbar'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-fugitive'
 Plugin 'vim-airline/vim-airline'
-Plugin 'xolox/vim-easytags'
 Plugin 'nvie/vim-flake8'
-Plugin 'xolox/vim-misc'
-Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'DoxygenToolkit.vim'
-Plugin 'editorconfig/editorconfig-vim'
 Plugin 'fatih/vim-go'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'rust-lang/rust.vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'embear/vim-localvimrc'
-Plugin 'zah/nim.vim'
 
 call vundle#end()
 
@@ -83,27 +75,10 @@ set complete-=i
 set wildmode=longest,list
 set wildmenu
 
-" Doxygen settings
-let g:DoxygenToolkit_authorName="Isaac Hier"
-
 " vim-airline settings
 set laststatus=2
 let g:airline_detect_paste = 1  " Show PASTE if in paste mode
 let g:airline#extensions#tabline#enabled = 1  " Show airline for tabs too
-
-" NERDTree settings
-nnoremap <silent> <leader>t :NERDTreeTabsToggle<CR>
-let g:nerdtree_tabs_open_on_console_startup = 0
-let g:nerdtree_tabs_open_on_gui_startup = 0
-
-" vim-easytags settings
-" Where to look for tags files
-set tags=.tags;,~/.vimtags
-let g:easytags_events = ['BufReadPost', 'BufWritePost']
-let g:easytags_async = 1
-let g:easytags_dynamic_files = 2
-let g:easytags_resolve_links = 1
-let g:easytags_suppress_ctags_warning = 1
 
 " a.vim
 let g:alternateNoDefaultAlternate = 1
@@ -119,12 +94,6 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
 
 " vim-localvimrc
 let g:localvimrc_whitelist=['/home/ihier/proj', '/Users/isaachier/proj/']
-
-" Tagbar settings
-" Open/close tagbar with \b
-nnoremap <silent> <leader>b :TagbarToggle<CR>
-" Uncomment to open tagbar automatically whenever possible
-"autocmd BufEnter * nested :call tagbar#autoopen(0)
 
 " Protect large files from sourcing and other overhead.
 " Files become read only

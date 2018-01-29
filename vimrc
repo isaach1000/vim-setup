@@ -53,9 +53,6 @@ set vb t_vb = ""
 " Show trailing spaces
 autocmd BufWinEnter * match ErrorMsg '\s\+$'
 
-" Fix tabs for makefiles
-autocmd FileType make setlocal noexpandtab
-
 colorscheme evening
 
 " 80 characters per line

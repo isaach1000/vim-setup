@@ -5,17 +5,18 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'vim-scripts/a.vim'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'embear/vim-localvimrc'
+Plugin 'fatih/vim-go'
 Plugin 'flazz/vim-colorschemes'
+Plugin 'jalcine/cmake.vim'
+Plugin 'mileszs/ack.vim'
+Plugin 'nvie/vim-flake8'
+Plugin 'rust-lang/rust.vim'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-fugitive'
 Plugin 'vim-airline/vim-airline'
-Plugin 'nvie/vim-flake8'
-Plugin 'fatih/vim-go'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'rust-lang/rust.vim'
-Plugin 'mileszs/ack.vim'
-Plugin 'embear/vim-localvimrc'
+Plugin 'vim-scripts/a.vim'
 
 call vundle#end()
 
@@ -80,8 +81,16 @@ let g:airline#extensions#tabline#enabled = 1  " Show airline for tabs too
 " a.vim
 let g:alternateNoDefaultAlternate = 1
 
-" EditorConfig settings
-let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+" clang-format
+function FormatFile()
+  let l:lines="all"
+  if has('gui_macvim')
+    pyf /usr/local/Cellar/clang-format/2017-11-14/share/clang/clang-format.py
+  else
+    py3file ~/proj/config/vim-setup/clang-format.py
+  endif
+endfunction
+autocmd BufWritePre *.h,*.c,*.cpp call FormatFile()
 
 " YouCompleteMe settings
 let g:ycm_extra_conf_globlist = ['~/proj/*']

@@ -17,6 +17,8 @@ Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-fugitive'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-scripts/a.vim'
+Plugin 'xolox/vim-easytags'
+Plugin 'xolox/vim-misc'
 
 call vundle#end()
 

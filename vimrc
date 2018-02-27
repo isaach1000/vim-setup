@@ -9,6 +9,7 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'embear/vim-localvimrc'
 Plugin 'fatih/vim-go'
 Plugin 'flazz/vim-colorschemes'
+Plugin 'majutsushi/tagbar'
 Plugin 'jalcine/cmake.vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'nvie/vim-flake8'
@@ -81,6 +82,19 @@ let g:airline#extensions#tabline#enabled = 1  " Show airline for tabs too
 
 " a.vim
 let g:alternateNoDefaultAlternate = 1
+
+" vim-easytags settings
+" Where to look for tags files
+set tags=~/.vimtags
+let g:easytags_events = ['BufReadPost', 'BufWritePost']
+let g:easytags_async = 1
+let g:easytags_dynamic_files = 2
+let g:easytags_resolve_links = 1
+let g:easytags_suppress_ctags_warning = 1
+
+" Tagbar settings
+" Open/close tagbar with \b
+nnoremap <silent> <leader>b :TagbarToggle<CR>
 
 " clang-format
 function FormatFile()

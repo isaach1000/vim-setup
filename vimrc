@@ -103,6 +103,15 @@ function FormatFile()
 endfunction
 autocmd BufWritePre *.h,*.c,*.cpp call FormatFile()
 
+" vim-easytags settings
+" Where to look for tags files
+set tags=.tags;,~/.vimtags
+let g:easytags_events = ['BufReadPost', 'BufWritePost']
+let g:easytags_async = 1
+let g:easytags_dynamic_files = 2
+let g:easytags_resolve_links = 1
+let g:easytags_suppress_ctags_warning = 1
+
 " YouCompleteMe settings
 let g:ycm_extra_conf_globlist = ['~/proj/*']
 
@@ -115,17 +124,24 @@ let g:localvimrc_whitelist=['/home/ihier/proj', '/Users/isaachier/proj/']
 " Protect large files from sourcing and other overhead.
 " Files become read only
 if !exists("my_auto_commands_loaded")
-  let my_auto_commands_loaded = 1
-  " Large files are > 500kb
-  " Set options:
-  " eventignore+=FileType (no syntax highlighting etc
-  " assumes FileType always on)
-  " noswapfile (save copy of file)
-  " bufhidden=unload (save memory when other file is viewed)
-  " buftype=nowritefile (is read-only)
-  " undolevels=-1 (no undo possible)
-  let g:LargeFile = 1024 * 500
-  augroup LargeFile
-    autocmd BufReadPre * let f=expand("<afile>") | if getfsize(f) > g:LargeFile | set eventignore+=FileType | setlocal noswapfile bufhidden=unload buftype=nowrite undolevels=-1 | else | set eventignore-=FileType | endif
-    augroup END
-  endif
+	let my_auto_commands_loaded = 1
+	" Large files are > 500kb
+	" Set options:
+	" eventignore+=FileType (no syntax highlighting etc
+	" assumes FileType always on)
+	" noswapfile (save copy of file)
+	" bufhidden=unload (save memory when other file is viewed)
+	" buftype=nowritefile (is read-only)
+	" undolevels=-1 (no undo possible)
+	let g:LargeFile = 1024 * 500
+	augroup LargeFile
+	autocmd BufReadPre * let f=expand("<afile>") | if getfsize(f) > g:LargeFile | set eventignore+=FileType | setlocal noswapfile bufhidden=unload buftype=nowrite undolevels=-1 | else | set eventignore-=FileType | endif
+	augroup END
+endif
+
+if has('gui_macvim')
+	highlight Cursor guifg=white guibg=steelblue
+    highlight iCursor guifg=white guibg=steelblue
+	set guicursor=n-v-c:block-Cursor
+	set guicursor+=i:ver100-iCursor
+endif

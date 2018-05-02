@@ -15,6 +15,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'vim-scripts/a.vim'
 Plugin 'xolox/vim-easytags'
 Plugin 'xolox/vim-misc'
+Plugin 'zig-lang/zig.vim'
 
 call vundle#end()
 

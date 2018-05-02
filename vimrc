@@ -96,11 +96,7 @@ nnoremap <silent> <leader>b :TagbarToggle<CR>
 " clang-format
 function FormatFile()
   let l:lines="all"
-  if has('gui_macvim')
-    pyf /usr/local/Cellar/clang-format/2017-11-14/share/clang/clang-format.py
-  else
-    py3file ~/proj/config/vim-setup/clang-format.py
-  endif
+  py3file ~/proj/config/vim-setup/clang-format.py
 endfunction
 autocmd BufWritePre *.h,*.c,*.cpp,*.proto call FormatFile()
 

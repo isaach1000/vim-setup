@@ -101,7 +101,7 @@ function FormatFile()
     py3file ~/proj/config/vim-setup/clang-format.py
   endif
 endfunction
-autocmd BufWritePre *.h,*.c,*.cpp call FormatFile()
+autocmd BufWritePre *.h,*.c,*.cpp,*.proto call FormatFile()
 
 " vim-easytags settings
 " Where to look for tags files

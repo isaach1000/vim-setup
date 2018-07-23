@@ -16,6 +16,7 @@ Plugin 'vim-scripts/a.vim'
 Plugin 'xolox/vim-easytags'
 Plugin 'xolox/vim-misc'
 Plugin 'zig-lang/zig.vim'
+Plugin 'scrooloose/nerdcommenter'
 
 call vundle#end()
 
@@ -93,12 +94,77 @@ let g:easytags_suppress_ctags_warning = 1
 " Open/close tagbar with \b
 nnoremap <silent> <leader>b :TagbarToggle<CR>
 
+" Go tags
+let g:tagbar_type_go = {
+	\ 'ctagstype' : 'go',
+	\ 'kinds'     : [
+		\ 'p:package',
+		\ 'i:imports:1',
+		\ 'c:constants',
+		\ 'v:variables',
+		\ 't:types',
+		\ 'n:interfaces',
+		\ 'w:fields',
+		\ 'e:embedded',
+		\ 'm:methods',
+		\ 'r:constructor',
+		\ 'f:functions'
+	\ ],
+	\ 'sro' : '.',
+	\ 'kind2scope' : {
+		\ 't' : 'ctype',
+		\ 'n' : 'ntype'
+	\ },
+	\ 'scope2kind' : {
+		\ 'ctype' : 't',
+		\ 'ntype' : 'n'
+	\ },
+	\ 'ctagsbin'  : 'gotags',
+	\ 'ctagsargs' : '-sort -silent'
+\ }
+
+" Zig tags
+let g:tagbar_type_zig = {
+	\ 'ctagstype' : 'zig',
+	\ 'kinds'     : [
+		\ 's:structs',
+		\ 'u:unions',
+		\ 'e:enums',
+		\ 'v:variables',
+		\ 'm:members',
+        \ 'f:functions',
+        \ 'r:errors'
+	\ ],
+	\ 'sro' : '.',
+	\ 'kind2scope' : {
+		\ 'e' : 'enum',
+		\ 'u' : 'union',
+		\ 's' : 'struct',
+        \ 'r' : 'error'
+	\ },
+	\ 'scope2kind' : {
+		\ 'enum' : 'e',
+		\ 'union' : 'u',
+		\ 'struct' : 's',
+		\ 'error' : 'r'
+	\ },
+	\ 'ctagsbin'  : '~/proj/zig/ztags/zig-cache/ztags',
+	\ 'ctagsargs' : ''
+\ }
+
 " clang-format
+let g:clang_format_path="/usr/lib/llvm-7/bin/clang-format"
 function FormatFile()
   let l:lines="all"
-  py3file ~/proj/config/vim-setup/clang-format.py
+  py3file ~/proj/config/vim-setup/vimpy/clang-format.py
 endfunction
 autocmd BufWritePre *.h,*.c,*.cpp,*.proto call FormatFile()
+
+" clang-rename
+let g:clang_rename_path="/usr/lib/llvm-7/bin/clang-rename"
+function Rename()
+  py3file ~/proj/config/vim-setup/vimpy/clang-rename.py
+endfunction
 
 " vim-easytags settings
 " Where to look for tags files
@@ -111,12 +177,40 @@ let g:easytags_suppress_ctags_warning = 1
 
 " YouCompleteMe settings
 let g:ycm_extra_conf_globlist = ['~/proj/*']
+let g:ycm_server_python_interpreter = 'python3'
+let g:ycm_python_binary_path = 'python3'
+let g:ycm_semantic_triggers = {'haskell' : ['.']}
 
 " ack.vim
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
 " vim-localvimrc
 let g:localvimrc_whitelist=['/home/ihier/proj', '/Users/isaachier/proj/']
+
+" nerdcommenter
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+
+" Set a language to use its alternate delimiters by default
+let g:NERDAltDelims_java = 1
+
+" Add your own custom formats or override the defaults
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+
+" Enable NERDCommenterToggle to check all selected lines is commented or not 
+let g:NERDToggleCheckAllLines = 1
 
 if has('gui_macvim')
 	highlight Cursor guifg=white guibg=steelblue

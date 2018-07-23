@@ -17,6 +17,7 @@ Plugin 'xolox/vim-easytags'
 Plugin 'xolox/vim-misc'
 Plugin 'zig-lang/zig.vim'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'jparise/vim-graphql'
 
 call vundle#end()
 

@@ -1,3 +1,5 @@
+silent! py3 pass
+
 set nocompatible
 filetype off
 

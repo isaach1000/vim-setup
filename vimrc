@@ -160,6 +160,7 @@ if has('gui_macvim')
     let g:clang_format_path="/usr/local/opt/clang-format/bin/clang-format"
 else
     let g:clang_format_path="/usr/bin/clang-format"
+endif
 function FormatFile()
   let l:lines="all"
   py3file ~/proj/config/vim-setup/vimpy/clang-format.py

@@ -156,7 +156,10 @@ let g:tagbar_type_zig = {
 \ }
 
 " clang-format
-let g:clang_format_path="/usr/bin/clang-format"
+if has('gui_macvim')
+    let g:clang_format_path="/usr/local/opt/clang-format/bin/clang-format"
+else
+    let g:clang_format_path="/usr/bin/clang-format"
 function FormatFile()
   let l:lines="all"
   py3file ~/proj/config/vim-setup/vimpy/clang-format.py
@@ -211,7 +214,7 @@ let g:NERDCommentEmptyLines = 1
 " Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
 
-" Enable NERDCommenterToggle to check all selected lines is commented or not 
+" Enable NERDCommenterToggle to check all selected lines is commented or not
 let g:NERDToggleCheckAllLines = 1
 
 if has('gui_macvim')

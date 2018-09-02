@@ -156,7 +156,7 @@ let g:tagbar_type_zig = {
 \ }
 
 " clang-format
-let g:clang_format_path="/usr/lib/llvm-7/bin/clang-format"
+let g:clang_format_path="/usr/bin/clang-format"
 function FormatFile()
   let l:lines="all"
   py3file ~/proj/config/vim-setup/vimpy/clang-format.py
@@ -182,7 +182,6 @@ let g:easytags_suppress_ctags_warning = 1
 let g:ycm_extra_conf_globlist = ['~/proj/*']
 let g:ycm_server_python_interpreter = 'python3'
 let g:ycm_python_binary_path = 'python3'
-let g:ycm_semantic_triggers = {'haskell' : ['.']}
 
 " ack.vim
 let g:ackprg = 'ag --nogroup --nocolor --column'

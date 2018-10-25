@@ -20,6 +20,7 @@ Plugin 'xolox/vim-misc'
 Plugin 'zig-lang/zig.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'jparise/vim-graphql'
+Plugin 'elubow/cql-vim'
 Plugin 'cespare/vim-toml'
 Plugin 'wakatime/vim-wakatime'
 

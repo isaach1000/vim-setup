@@ -221,6 +221,9 @@ let g:NERDTrimTrailingWhitespace = 1
 " Enable NERDCommenterToggle to check all selected lines is commented or not
 let g:NERDToggleCheckAllLines = 1
 
+" Disable gocode proposals from source.
+let g:go_gocode_propose_source = 0
+
 if has('gui_macvim')
 	highlight Cursor guifg=white guibg=steelblue
     highlight iCursor guifg=white guibg=steelblue

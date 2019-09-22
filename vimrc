@@ -22,7 +22,9 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'jparise/vim-graphql'
 Plugin 'elubow/cql-vim'
 Plugin 'cespare/vim-toml'
-Plugin 'wakatime/vim-wakatime'
+Plugin 'grailbio/bazel-compilation-database'
+Plugin 'JuliaEditorSupport/julia-vim'
+Plugin 'elixir-editors/vim-elixir'
 
 call vundle#end()
 
@@ -38,8 +40,8 @@ set mouse=a
 filetype plugin indent on
 
 " General settings
-set shiftwidth=4
-set tabstop=4
+set shiftwidth=2
+set tabstop=2
 set expandtab
 set smarttab autoindent
 set backspace=indent,eol,start
@@ -154,21 +156,18 @@ let g:tagbar_type_zig = {
 		\ 'struct' : 's',
 		\ 'error' : 'r'
 	\ },
-	\ 'ctagsbin'  : '~/proj/zig/ztags/zig-cache/ztags',
+	\ 'ctagsbin'  : '~/.local/bin/ztags',
 	\ 'ctagsargs' : ''
 \ }
 
 " clang-format
-if has('gui_macvim')
-    let g:clang_format_path="/usr/local/opt/clang-format/bin/clang-format"
-else
-    let g:clang_format_path="/usr/bin/clang-format"
-endif
+let g:clang_format_path="/usr/bin/clang-format-9"
+
 function FormatFile()
-  let l:lines="all"
-  py3file ~/proj/config/vim-setup/vimpy/clang-format.py
+"  let l:lines="all"
+"  py3file ~/proj/config/vim-setup/vimpy/clang-format.py
 endfunction
-autocmd BufWritePre *.h,*.c,*.cpp,*.proto call FormatFile()
+autocmd BufWritePre *.h,*.c,*.cc,*.cpp,*.proto call FormatFile()
 
 " clang-rename
 let g:clang_rename_path="/usr/lib/llvm-7/bin/clang-rename"
@@ -189,6 +188,7 @@ let g:easytags_suppress_ctags_warning = 1
 let g:ycm_extra_conf_globlist = ['~/proj/*']
 let g:ycm_server_python_interpreter = 'python3'
 let g:ycm_python_binary_path = 'python3'
+"let g:ycm_use_clangd = 'Never'
 
 " ack.vim
 let g:ackprg = 'ag --nogroup --nocolor --column'
@@ -223,10 +223,3 @@ let g:NERDToggleCheckAllLines = 1
 
 " Disable gocode proposals from source.
 let g:go_gocode_propose_source = 0
-
-if has('gui_macvim')
-	highlight Cursor guifg=white guibg=steelblue
-    highlight iCursor guifg=white guibg=steelblue
-	set guicursor=n-v-c:block-Cursor
-	set guicursor+=i:ver100-iCursor
-endif
